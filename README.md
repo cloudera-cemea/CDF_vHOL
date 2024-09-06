@@ -98,7 +98,8 @@ The following is a step by step guide in building a data flow for use within CDF
 
 
 ### 3.2 Configure parameters for the flow
-**We have been prepared the parameters in the draft for you, but we need to add our userid and password to some parameters, in the next steps we are going to edit the predefined parameters.**
+**We have been prepared the parameters in the draft for you to make the setup easier, otherwise you would be required to create the parameters completely. 
+Because we have preloaded these for you, you need to customize some parameters, in the next steps we are going to edit the predefined parameters.**
 
 This default context is automatically bound to each Process Group you create within y*our draft Flow, making all parameters available to be used in any process group.*
 
