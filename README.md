@@ -108,7 +108,7 @@ This default context is automatically bound to each Process Group you create wit
 
     <img src="images/3_cdf_editparam.png" alt="image" style="width:800px;height:auto;">
 
-3. Locate the parameter **CDP Workload User Password** and similarly add the following to the **Value** field: **X2uR6DLflfMwKopX** and click on **Apply Chagnes***
+3. Locate the parameter **CDP Workload User Password** and similarly add the password for the login to the **Value** field and click on **Apply Changes***
    
 
 4. Click **Flow Options > Services**
