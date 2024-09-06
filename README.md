@@ -109,7 +109,7 @@ This default context is automatically bound to each Process Group you create wit
 
 2. Please locate the parameters which are using **\<userid>** and open them and substitute it with your actual userid, as on the following picture, and after modification please select **Apply Changes** at the bottom
 
-    <img src="images/3_cdf_editparam.png" alt="image" style="width:800px;height:auto;">
+    <img src="images/3_cdf_editparam-2.png" alt="image" style="width:800px;height:auto;">
 
 3. Locate the parameter **CDP Workload User Password** and similarly add the password for the login to the **Value** field and click on **Apply Changes**
 
