@@ -106,95 +106,17 @@ This default context is automatically bound to each Process Group you create wit
 
 2. Please locate the parameters which are using **\<userid>** and open them and substitute it with your actual userid, as on the following picture, and after modification please select **Apply Changes** at the bottom
 
-    <img src="images/3_cdf_editparam.png" alt="image" style="width:600px;height:auto;">
- 
-Add the parameters. Click on **Add Parameter > Add Parameter** for each parameter to be added and enter the appropriate details:
+    <img src="images/3_cdf_editparam.png" alt="image" style="width:800px;height:auto;">
 
-    | Name  | Description | Value |
-    | ----------------- | ------------- | ------------- |
-    | CDP Workload User	| CDP Workload User | **\<Your own workload user name>**|
-    | Filter Rule | Filter Rule | **SELECT * FROM FLOWFILE**|
-    | Kafka Broker Endpoint| Comma-separated list of Kafka broker addresses	| **\<Comma-separated list of Kafka broker addresses. See notes below>**|
-    | Kafka Destination Avro Topic |Target Kafka topic name for AVRO messages| **\<userid>-syslog-avro**|
-    | Kafka Destination JSON Topic |Target Kafka topic name for JSON messages| **\<userid>-syslog-json**|
-    | Kafka Producer ID |Client ID of Kafka producer| **\<userid>-producer**|
-    | Schema Name |Schema name for AVRO Kafka topic| **\<userid>-syslog-avro**|
-    | Schema Registry Hostname |Hostname of Cloudera Schema Registry| **\<Hostname of Schema Registry service. See notes below>**|
+3. Locate the parameter **CDP Workload User Password** and similarly add the following to the **Value** field: **X2uR6DLflfMwKopX** and click on **Apply Chagnes***
+   
 
-
-
-    **Notes:**
-
-    * **Kafka Broker Endpoints:** 
-    
-        You can find the endpoints of your **Kafka Brokers** in the **Endpoints** view of your Streams Messaging (Kafka) DataHub cluster.
-
-        <img src="images/3_2_kafka_broker_endpoints.png" alt="image" style="width:1000px;height:auto;">
-
-        &nbsp;
-
-        <img src="images/3_2_kafka_broker_endpoints_details.png" alt="image" style="width:1000px;height:auto;">
-    
-        The value for the **Kafka Broker Endpoint** parameter must be a comma-separated list of the broker addresses, as shown in the example below:
-
-        <img src="images/3_2_kafka_broker_endpoints_param.png" alt="image" style="width:500px;height:auto;">
-
-     * **Schema Registry Hostname:**
-    
-        You can find the hostname to use as your **Schema Registry Hostname** in the **Nodes** view of your Streams Messaging (Kafka) DataHub cluster.  
-
-        <img src="images/3_2_sr_masternode.png" alt="image" style="width:1000px;height:auto;">
-
-        The value of **Schema Registry Hostname** is the hostname of the **Master** node:
-
-        <img src="images/3_2_sr_hostname.png" alt="image" style="width:500px;height:auto;">
-
-4. Add sensitive parameters. Click on **Add Parameter > Add Sensitive Parameter** for the workload password and enter the appropriate details:
-
-    | Name  | Description | Value |
-    | ----------------- | ------------- | ------------- |
-    | CDP Workload User Password | CDP Workload User Password | **\<Your own workload password for the environment>**|
-
-5. Once all the parameters have been created verify with the list below
-
-    <img src="images/3_2_flow_parameters.png" alt="image" style="width:800px;height:auto;">
-
-6. Click **Apply Changes** and then **Back To Flow Designer** to go back to the Flow Designer main page.
-
-### 3.3 Create Controller Services
-
-*Controller Services are extension points that provide information for use by other components (such as processors or other controller services). The idea is that, rather than configure this information in every processor that might need it, the controller service provides it for any processor to use as needed.*
-
-1. Enable the Test Session before configuring the services.
-
-    * Select **Flow Options > Test Session**. Use the latest NiFi version (default).
-    * Click the **Start** button to start a test session. The test session status changes to **Initializing Test Session**. 
-    * Wait for the status to change to Active Test Session.
-
-    <img src="images/3_2_test_session.png" alt="image" style="width:500px;height:auto;">
-
-    You are not yet at the point of testing the flow, but enabling a test session forces the **Default Nifi SSL Context Service** controller service to be created, which you will need in the next steps.
-
-    <img src="images/3_3_cs_ssl.png" alt="image" style="width:800px;height:auto;">
-
-
-
-
-2. Click **Flow Options > Services**
+4. Click **Flow Options > Services**
 
     **Note**: Make sure you have a test session running to run your flow. 
 
     <img src="images/3_3_cs.png" alt="image" style="width:600px;height:auto;">
 
-
-
----
-
-**Tip:** When type parameters into a property value you can use the following technique to see the list of available parameters:
-
-<img src="images/3_3_cs_params.png" alt="image" style="width:600px;height:auto;">
-
----
 &nbsp;
 
 3. Add a new **HortonworksSchemaRegistry** controller service
