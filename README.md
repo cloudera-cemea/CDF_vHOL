@@ -96,19 +96,19 @@ The following is a step by step guide in building a data flow for use within CDF
 
 
 ### 3.2 Configure parameters for the flow
-Configure parameters for the flow
-
-*Parameters are created within Parameter Contexts. In the context of CDP Flow Designer, one default Parameter Context is auto-created when you create a new draft flow.*
-
-*You can then add parameters to this one Context, you cannot create additional ones.*
+We have been prepared the parameters in the draft for you, but we need to add our userid and password to some parameters, in the next steps we are going to edit the predefined parameters. 
 
 This default context is automatically bound to each Process Group you create within y*our draft Flow, making all parameters available to be used in any process group.*
 
-1. To create a Parameter, click on **Flow Options** in the top right corner and select Parameters
+1. To modify a Parameter, click on **Flow Options** in the top right corner and select Parameters
     
     <img src="images/3_2_flow_options.png" alt="image" style="width:600px;height:auto;">
 
-2. Add the parameters. Click on **Add Parameter > Add Parameter** for each parameter to be added and enter the appropriate details:
+2. Please locate the parameters which are using **\<userid>** and open them and substitute it with your actual userid, as on the following picture, and after modification please select **Apply Changes** at the bottom
+
+    <img src="images/3_cdf_editparam.png" alt="image" style="width:600px;height:auto;">
+ 
+Add the parameters. Click on **Add Parameter > Add Parameter** for each parameter to be added and enter the appropriate details:
 
     | Name  | Description | Value |
     | ----------------- | ------------- | ------------- |
@@ -149,17 +149,17 @@ This default context is automatically bound to each Process Group you create wit
 
         <img src="images/3_2_sr_hostname.png" alt="image" style="width:500px;height:auto;">
 
-3. Add sensitive parameters. Click on **Add Parameter > Add Sensitive Parameter** for the workload password and enter the appropriate details:
+4. Add sensitive parameters. Click on **Add Parameter > Add Sensitive Parameter** for the workload password and enter the appropriate details:
 
     | Name  | Description | Value |
     | ----------------- | ------------- | ------------- |
     | CDP Workload User Password | CDP Workload User Password | **\<Your own workload password for the environment>**|
 
-4. Once all the parameters have been created verify with the list below
+5. Once all the parameters have been created verify with the list below
 
     <img src="images/3_2_flow_parameters.png" alt="image" style="width:800px;height:auto;">
 
-5. Click **Apply Changes** and then **Back To Flow Designer** to go back to the Flow Designer main page.
+6. Click **Apply Changes** and then **Back To Flow Designer** to go back to the Flow Designer main page.
 
 ### 3.3 Create Controller Services
 
