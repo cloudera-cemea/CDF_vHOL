@@ -21,7 +21,9 @@ The following is a step by step guide in building a data flow for use within CDF
 
 ### 2. Create a schema in Schema Registry
 
-1.	Login to **Schema Registry** by clicking the appropriate hyperlink in the **Streams Messaging Datahub**.
+1. Login to CDP console, select **Data Hub Clusters** and open the **cdf-vhol-messaging** datahub, which is a Streams Messaging Light Duty datahub. 
+
+1.	On the UI, click on **Schema Registry** 
 
     <img src="images/2_sr_link.png" alt="image" style="width:600px;height:auto;">
 
