@@ -83,16 +83,16 @@ The following is a step by step guide in building a data flow for use within CDF
 
 ---
 
-### 3.1 Open the prepared flow draft
+### 3.1 Open the prepared draft flow
 
-1. In Cloudera DataFlow, go to **Flow Design** 
+1. In Cloudera DataFlow, go to **Flow Design** and look for **CDF Workshop draft** 
 
     <img src="images/3_cdf_menu_1.png" alt="image" style="width:800px;height:auto;">
 
 
-2. To create your flow, click on the **CDF Workshop draft** and select (<img src="images/3_cdf_deploy.png" alt="image" style="width:auto;height:30px;">) click continue and name the flow **\<userid>-syslog-kafka-flow**
+2. To create your flow, click on the **CDF Workshop draft** and select (<img src="images/3_cdf_createnewdraft.png" alt="image" style="width:auto;height:30px;">) click continue and name the flow **\<userid>-syslog-kafka-flow**
 
-    <img src="images/3_1_create_flow.png" alt="image" style="width:500px;height:auto;">
+    <img src="images/3_1_create_flow_1.png" alt="image" style="width:500px;height:auto;">
 
 
 ### 3.2 Configure parameters for the flow
