@@ -122,87 +122,16 @@ This default context is automatically bound to each Process Group you create wit
 
 4. Click **Flow Options > Services**
 
-    **Note**: Make sure you have a test session running to run your flow. 
+    **Note**: Make sure you have a test session running to run your flow, you will see a **Stop** button instead of the **Test session** now. 
+   
+   <img src="images/3_3_cs.png" alt="image" style="width:600px;height:auto;">
 
-   * Enable all services (**except the Dummy Controller Service - Do not touch!!!**) by clicking on the and select the (<img src="images/enable.png" alt="image" style="width:auto;height:30px;">) icon 
-    <img src="images/3_3_cs.png" alt="image" style="width:600px;height:auto;">
+   * Select **Flow Options > Services**
+   * Enable all services (**except the Dummy Controller Service - Do not touch!!!**) by clicking on the and select the (<img src="images/enable.png" alt="image" style="width:auto;height:30px;">) icon, start with the **WS_CDP_Schema_Registry**
 
-&nbsp;
+    <img src="images/3_4_controller.png" alt="image" style="width:600px;height:auto;">
 
-3. Add a new **HortonworksSchemaRegistry** controller service
-
-    * Click Add Service. The Add Service page opens.
-
-        <img src="images/3_3_cs_add_service.png" alt="image" style="width:800px;height:auto;">
-
-
-    * In the text box, filter for **HortonworksSchemaRegistry**, select it and click **Add**
-    * Configure the HortonworksSchemaRegistry service with the Service name **WS_CDP_Schema_Registry** and add the following properties:
-        
-
-        | **Property**  | **Value** |
-        | ----------------- | ------------- | 
-        | Schema Registry URL | https://#{Schema Registry Hostname}:7790/api/v1 |
-        | SSL Context Service | Default Nifi SSL Context Service |
-        | Kerberos Principal | #{CDP Workload User} |
-        | Kerberos Password | #{CDP Workload User Password} |
-
-        This is how the configuration should look like:
-
-        <img src="images/3_3_sr_parameters.png" alt="image" style="width:800px;height:auto;">
-
-    * Click Apply
-    * Activate the service by clicking on the Enable Icon
-
-        <img src="images/3_3_sr_enable.png" alt="image" style="width:800px;height:auto;">
-    
-
-4. Add a new **Syslog5424Reader** controller service with the service name **WS_Syslog_5424_Reader**. Then click **Apply** and activate the service by clicking on the "Enable Icon".
-
-
-5.	Add a new **JsonTreeReader controller service** with the service name **WS_JSON_Syslog_Reader** and add the following properties. Then click **Apply** and activate the service by clicking on the "Enable Icon".
-
-
-    | **Property**  | **Value** |
-    | ----------------- | ------------- | 
-    | Schema Access Strategy | **Use ‘Schema Name’ Property** |
-    | Schema Registry | **WS_CDP_Schema_Registry** |
-    | Schema Name | **#{Schema Name}** |
-
-    This is how the configuration should look like:
-
-    <img src="images/3_3_cs_json_tree_reader.png" alt="image" style="width:600px;height:auto;">
-
-6.	Add a new **JsonRecordSetWriter controller service** with the service name **WS_JSON_Syslog_Writer**, add the following properties and click *Apply*
-
-    | **Property**  | **Value** |
-    | ----------------- | ------------- | 
-    | Schema Access Strategy | **Use ‘Schema Name’ Property** |
-    | Schema Registry | **WS_CDP_Schema_Registry** |
-    | Schema Name | **#{Schema Name}** |
-
-    This is how the configuration should look like:
-
-    <img src="images/3_3_cs_json_recordset_writer.png" alt="image" style="width:600px;height:auto;">
-
-7.	Add a new **AvroRecordSetWriter controller service** with the service name **WS_Avro_Syslog_Writer**, add the following properties and click *Apply*
-
-    | **Property**  | **Value** |
-    | ----------------- | ------------- | 
-    | Schema Write Strategy | **HWX Content-Encoded Schema Reference** |
-    | Schema Access Strategy | **Use ‘Schema Name’ Property** |
-    | Schema Registry | **WS_CDP_Schema_Registry** |
-    | Schema Name | **#{Schema Name}** |
-
-    This is how the configuration should look like:
-
-    <img src="images/3_3_cs_avro_recordset_writer.png" alt="image" style="width:600px;height:auto;">
-
-8. This completes the configurations of all the controller services. Please verify with the list below and make sure that all controller services are **enabled**
-
-    <img src="images/3_3_cs_list_all.png" alt="image" style="width:1000px;height:auto;">
-
-9.	Click on the **Back to Flow Designer** link to go back to the flow canvas
+6.	Click on the **Back to Flow Designer** link to go back to the flow canvas
 
 &nbsp;
 
