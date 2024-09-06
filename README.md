@@ -125,12 +125,12 @@ This default context is automatically bound to each Process Group you create wit
     **Note**: Make sure you have a test session running to run your flow, you will see a **Stop** button instead of the **Test session** now. 
    &nbsp;
    <img src="images/3_3_cs.png" alt="image" style="width:600px;height:auto;">
-&nbsp;
+
    * Select **Flow Options > Services**
    * Enable all services (**except the Dummy Controller Service - Do not touch!!!**) by clicking on the and select the (<img src="images/enable.png" alt="image" style="width:auto;height:30px;">) icon, start with the **WS_CDP_Schema_Registry**
-&nbsp;
+
     <img src="images/3_4_controller.png" alt="image" style="width:600px;height:auto;">
-&nbsp;
+
 6.	Click on the **Back to Flow Designer** link to go back to the flow canvas
 
 &nbsp;
