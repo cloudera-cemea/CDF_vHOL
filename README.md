@@ -108,13 +108,23 @@ This default context is automatically bound to each Process Group you create wit
 
     <img src="images/3_cdf_editparam.png" alt="image" style="width:800px;height:auto;">
 
-3. Locate the parameter **CDP Workload User Password** and similarly add the password for the login to the **Value** field and click on **Apply Changes***
-   
+3. Locate the parameter **CDP Workload User Password** and similarly add the password for the login to the **Value** field and click on **Apply Changes**
+
+4. Enable the Test Session before enabling the services.
+
+   * Select **Flow Options > Test Session**. Use the latest NiFi version (default).
+   * Click the **Start** button to start a test session. The test session status changes to **Initializing Test Session**.
+   * Wait for the status to change to Active Test Session.
+
+   <img src="images/3_2_test_session.png" alt="image" style="width:600px;height:auto;">
+
+   You are not yet at the point of testing the flow, but enabling a test session provided you an option to enable all controller services, except the **Dummy Controller Service - Do not touch!!!**, which we will do in the next step. 
 
 4. Click **Flow Options > Services**
 
     **Note**: Make sure you have a test session running to run your flow. 
 
+   * Enable all services (**except the Dummy Controller Service - Do not touch!!!**) by clicking on the and select the (<img src="images/enable.png" alt="image" style="width:auto;height:30px;">) icon 
     <img src="images/3_3_cs.png" alt="image" style="width:600px;height:auto;">
 
 &nbsp;
