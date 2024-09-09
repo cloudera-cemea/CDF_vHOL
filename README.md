@@ -583,7 +583,7 @@ Before you can use SSB to process data from Kafka topics you must register one o
     | **Property**  | **Value** |
     | ----------------- | ------------- | 
     | Name | **\<name of your data source. E.g. dh-kafka>** |
-    | Brokers | **<comma-separated list of brokers> (See the Notes under section "3.2 Configure parameters for the flow" for more details on how to find the Kafka broker addresses)** |
+    | Brokers | **<comma-separated list of brokers> (Please ask in the Zoom chat from the host)** |
     | Protocol | **SASL/SSL** |
     | SASL Mechanism | **PLAIN** |
     | SASL Username | **\<your workload username>** |
@@ -610,7 +610,7 @@ Schema Registry stores schemas that are used to read/write data from/to Kafka to
 | Name | **\<name of the catalog. E.g. dh-schreg>** |
 | Kafka Cluster | **\<select the Kafka data source you created the previous section>** |
 | Enable TLS | **Enabled** |
-| Schema Registry URL | **https://<schreg_hostname>:7790/api/v1 (See the Notes under section "3.2 Configure parameters for the flow" for more details on how to find the Kafka broker addresses)** |
+| Schema Registry URL | **https://<schreg_hostname>:7790/api/v1 (Please ask in the Zoom chat from the host)** |
 
 <img src="images/ssb_3_new_catalog_details.png" alt="image" style="width:800px;height:auto;">
 
