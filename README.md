@@ -428,7 +428,7 @@ OR
 
 * This will take you to the list of all flows running on the same environment (workspace) as the flow you selected. To publish the flow, Workspace view, click again on the   menu for the desired flow and select **Publish Flow**. 
 
-    <img src="images/5_publish_flow_dropdown.png" alt="image" style="width:1000px;height:auto;">
+    <img src="images/5_publish_flow_dropdown_1.png" alt="image" style="width:1000px;height:auto;">
 
 
 1.	Choose one of the methods explained above and publish your flow.
