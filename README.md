@@ -416,9 +416,9 @@ On the first time a flow draft is exported to the catalog you are asked to provi
 
 When you want to publish a draft flow as a flow definition, you have two options: 
 
-* On the Flow Design Canvas, click **Flow Options > Publish To Catalog > Publish**
+* On the Flow Design Canvas, click **Flow Options > Publish To Catalog > Publish As**
 
-    <img src="images/5_draft_publish_flow.png" alt="image" style="width:600px;height:auto;">
+    <img src="images/5_draft_publish_flow_1.png" alt="image" style="width:600px;height:auto;">
 
 OR
 
