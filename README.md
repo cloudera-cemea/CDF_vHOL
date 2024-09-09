@@ -645,22 +645,11 @@ This will make the **syslog_severity** table, which has already been created in 
     | ----------------- | ------------- | 
     | Name | **\<name of of the catalog. E.g. dh-kudu>** |
     | Catalog Type | **Kudu** |
-    | Kudu Masters | **\<kudu_master1>:7051,\<kudu_master2>:7051,\<kudu_master3>:7051** |
+    | Kudu Masters | **\<kudu_master1>:7051,\<kudu_master2>:7051,\<kudu_master3>:7051** (**Please ask in the Zoom chat from the host**)|
 
     <img src="images/ssb_4_catalog_kudu.png" alt="image" style="width:800px;height:auto;">
 
-**Notes:**
-* Kudu Masters: The hostname of the Kudu master nodes can be found in the Real-time Data Mart (Kudu) DataHub page. In the CDP Console, find your Real-time Data Mart DataHub and click on the Nodes tab. Copy the FQDN for the 3 masters, as shown in the screenshot below.
-
-    The full masters address to be provided during the catalog registration is the following:
-
-    <img src="images/ssb_4_kudu_masters.png" alt="image" style="width:1000px;height:auto;">
-
-    &nbsp;
-
-    <img src="images/ssb_4_kudu_masters_details.png" alt="image" style="width:1000px;height:auto;">
-
-3.	Click on the Validate link to validate the Catalog. Once the catalog is successfully validatedp click the **Create** button to register the Kudu catalog.
+3.	Click on the Validate link to validate the Catalog. Once the catalog is successfully validated click the **Create** button to register the Kudu catalog.
 
     <img src="images/ssb_4_catalog_kudu_create.png" alt="image" style="width:800px;height:auto;">
 
