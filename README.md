@@ -426,7 +426,7 @@ OR
 
     <img src="images/5_workspace.png" alt="image" style="width:1000px;height:auto;">
 
-* This will take you to the list of all flows running on the same environment (workspace) as the flow you selected. To publish the flow, Workspace view, click again on the   menu for the desired flow and select **Publish Flow**. 
+* This will take you to the list of all flows running on the same environment (workspace) as the flow you selected. To publish the flow, Workspace view, click again on the   menu for the desired flow and select **Publish As**. 
 
     <img src="images/5_publish_flow_dropdown_1.png" alt="image" style="width:1000px;height:auto;">
 
