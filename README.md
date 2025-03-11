@@ -537,7 +537,7 @@ OR
 
 13.	Click Deploy to initiate the flow deployment.
 
-14.	In the DataFlow **Dashboard**, monitor your flow until it's running successfully (a green check mark will appear once the deployment has completed)
+14.	In the DataFlow Dashboard **Deployments**, monitor your flow until it's running successfully (a green check mark will appear once the deployment has completed)
          
     <img src="images/6_flow_good_health.png" alt="image" style="width:10000px;height:auto;">
 
