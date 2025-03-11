@@ -401,7 +401,7 @@ Tip: You can check the status of your Test Session in the upper right corner of 
     You can also view the data from the data explorer:  
     <img src="images/4_smm_data_explorer.png" alt="image" style="width:1000px;height:auto;">
 
-7.	You can see that the data in that topic is binary (lots of garbage-like characters on the screen. This is because the topic contains Avro messages, which is a binary serialization format.
+7.	If you're seing the **\<userid\>-syslog-avro** topic, you can see that the data in that topic is binary (lots of garbage-like characters). This is because this topic contains Avro messages, which is a binary serialization format.
 
     Fortunately, SMM is integrated to Schema Registry and can fetch the correct schema to properly deserialize the data and present a human-readable form of it.
     To do that select Avro as the Values Deserializer for the topic:
