@@ -481,15 +481,16 @@ OR
     | ----------------- | ------------- | 
     | CDP Workload User | **The workload username for the current user** |
     | CDP Workload Password | **The workload password for the current user** |
+    | Filter Rule | **SELECT * FROM FLOWFILE** |
     | Kafka Broker Endpoint | **Comma separated list of Kafka Brokers** |
     | Kafka Destination Avro Topic | **\<userid>-syslog-avro** |
     | Kafka Destination JSON Topic | **\<userid>-syslog-json** |
     | Kafka Producer ID | **\<userid>-producer** |
     | Schema Name | **\<userid>-syslog-avro** |
     | Schema Registry Hostname | **The hostname of the master server in the Kafka Datahub** |
-    | Filter Rule | **SELECT * FROM FLOWFILE** |
 
-8. In the **Sizing & Scaling** dialog, select the following and then click **Next**:
+
+9. In the **Sizing & Scaling** dialog, select the following and then click **Next**:
 
     | **Property**  | **Value** |
     | ----------------- | ------------- | 
@@ -498,7 +499,7 @@ OR
     | Min Nodes | **1** |
     | Max Nodes | **3** |
 
-9. In the Key Performance Indicators page, click on Add New KPI to add the following KPIs.
+10. In the Key Performance Indicators page, click on Add New KPI to add the following KPIs.
 
     <img src="images/6_add_kpi.png" alt="image" style="width:200px;height:auto;">
 
@@ -526,25 +527,25 @@ OR
 
         <img src="images/6_kpi_2.png" alt="image" style="width:600px;height:auto;">
 
-10.	Review the KPIs and click Next.
+11.	Review the KPIs and click Next.
 
     <img src="images/6_kpi_list.png" alt="image" style="width:800px;height:auto;">
 
-11.	In the Review page, review your deployment details.
+12.	In the Review page, review your deployment details.
 
     Notice that in this page there's a **>_ View CLI Command** link, which allows you to automate the flow deployment using the CDP CLI.
 
-12.	Click Deploy to initiate the flow deployment.
+13.	Click Deploy to initiate the flow deployment.
 
-13.	In the DataFlow **Dashboard**, monitor your flow until it's running successfully (a green check mark will appear once the deployment has completed)
+14.	In the DataFlow **Dashboard**, monitor your flow until it's running successfully (a green check mark will appear once the deployment has completed)
          
     <img src="images/6_flow_good_health.png" alt="image" style="width:10000px;height:auto;">
 
-14.	 Click on your deployment and explore the flow details and monitor the KPI metrics that are shown on this page.
+15.	 Click on your deployment and explore the flow details and monitor the KPI metrics that are shown on this page.
 
-15.	Then click on **Manage Deployment** and explore the options under Deployment Settings, which allow you to manage your production flow deployment.
+16.	Then click on **Manage Deployment** and explore the options under Deployment Settings, which allow you to manage your production flow deployment.
 
-16.	Explore the links in the **Actions** menu on this page.
+17.	Explore the links in the **Actions** menu on this page.
 
 
 ## Lab 2: Streaming Analytics with Cloudera Stream Processing
