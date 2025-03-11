@@ -2,7 +2,7 @@
 
 ---
 
-## Data Distribution with Cloudera DataFlow
+## Lab 1: Data Distribution with Cloudera DataFlow
 
 ### 1. Overview
 
@@ -547,7 +547,7 @@ OR
 16.	Explore the links in the **Actions** menu on this page.
 
 
-## Streaming Analytics with Cloudera Stream Processing
+## Lab 2: Streaming Analytics with Cloudera Stream Processing
 
 ### Overview
 
