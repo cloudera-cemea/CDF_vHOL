@@ -87,7 +87,7 @@ The following is a step by step guide in building a data flow for use within CDF
 
 ### 3.1 Open the prepared draft flow
 
-1. In Cloudera DataFlow, go to **Catalog** and look for **CDF Workshop draft** 
+1. Click on the main menu (top left 9 dots icon on the UI) and open **DataFlow**, go to **Catalog** and look for **CDF Workshop draft** 
 
     <img src="images/3_cdf_menu_1.png" alt="image" style="width:800px;height:auto;">
 
