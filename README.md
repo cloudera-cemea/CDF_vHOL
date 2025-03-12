@@ -665,7 +665,7 @@ You saw that when you register a Schema Registry catalog SSB automatically maps 
 
 Sometimes, though, you don't have a schema for a particular topic and you may still want to consume or produce data to that topic. In SSB you can manually create a table and specify its schema directly, as well as the mapping to an existing Kafka topic. In this section you will practice this using the Add Table wizard.
 
-1. In your project workspace, navigate to Data Sources -> Virtual Tables. 
+1. In your project workspace, navigate to Virtual Tables. 
 
 2. Click the menu icon (<img src="images/ssb_2_menu.png" alt="image" style="width:20px;height:auto;">)  of the Virtual Tables item and select New Kafka Table to create a new virtual table.
 
