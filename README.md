@@ -991,16 +991,21 @@ You will start by creating a topic to store the results of your query and then m
     
     <img src="images/ssb_9_job5.png" alt="image" style="width:800px;height:auto;">
 
-10.	Click on the **Execute** button to submit your job for execution.
+    To take a step back, what you have done here is a SQL query
+  	 * using virtual tables abstracting the data sources
+    * that reads from a Kafka topic and a Kudu datasource
+    * and writes to a new Kafka topic!
 
-11.	You should see the output of the query on the Results tab once the job starts executing. You can close the tab or window at any time and the job will continue running on the Flink cluster.
+11.	Click on the **Execute** button to submit your job for execution.
+
+12.	You should see the output of the query on the Results tab once the job starts executing. You can close the tab or window at any time and the job will continue running on the Flink cluster.
 
     <img src="images/ssb_9_job5_output.png" alt="image" style="width:800px;height:auto;">
 
-12.	Open the SMM UI again, click on the Topics icon (<img src="images/ssb_9_smm_topic_magnifying_glass.png" alt="image" style="width:30px;height:auto;">) and search for the **\<userid>-severity-counts** topic.
+13.	Open the SMM UI again, click on the Topics icon (<img src="images/ssb_9_smm_topic_magnifying_glass.png" alt="image" style="width:30px;height:auto;">) and search for the **\<userid>-severity-counts** topic.
 
     <img src="images/ssb_9_job5_smm_topics.png" alt="image" style="width:800px;height:auto;">
 
-13.	Click on the Data Explorer icon (<img src="images/ssb_9_smm_topics_icon.png" alt="image" style="width:20px;height:auto;">) for the topic  to visualize the data in the topic. You should be able to see recently added data with the aggregations produced by job4:
+14.	Click on the Data Explorer icon (<img src="images/ssb_9_smm_topics_icon.png" alt="image" style="width:20px;height:auto;">) for the topic  to visualize the data in the topic. You should be able to see recently added data with the aggregations produced by job4:
 
     <img src="images/ssb_9_smm_topic_content_full.png" alt="image" style="width:800px;height:auto;">
