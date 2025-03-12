@@ -2,7 +2,7 @@
 
 ---
 
-## Data Distribution with Cloudera DataFlow
+## Lab 1: Data Distribution with Cloudera DataFlow
 
 ### 1. Overview
 
@@ -87,7 +87,7 @@ The following is a step by step guide in building a data flow for use within CDF
 
 ### 3.1 Open the prepared draft flow
 
-1. In Cloudera DataFlow, go to **Catalog** and look for **CDF Workshop draft** 
+1. Click on the main menu (top left 9 dots icon on the UI) and open **DataFlow**, go to **Catalog** and look for **CDF Workshop draft** 
 
     <img src="images/3_cdf_menu_1.png" alt="image" style="width:800px;height:auto;">
 
@@ -401,7 +401,7 @@ Tip: You can check the status of your Test Session in the upper right corner of 
     You can also view the data from the data explorer:  
     <img src="images/4_smm_data_explorer.png" alt="image" style="width:1000px;height:auto;">
 
-7.	You can see that the data in that topic is binary (lots of garbage-like characters on the screen. This is because the topic contains Avro messages, which is a binary serialization format.
+7.	If you're seing the **\<userid\>-syslog-avro** topic, you can see that the data in that topic is binary (lots of garbage-like characters). This is because this topic contains Avro messages, which is a binary serialization format.
 
     Fortunately, SMM is integrated to Schema Registry and can fetch the correct schema to properly deserialize the data and present a human-readable form of it.
     To do that select Avro as the Values Deserializer for the topic:
@@ -444,7 +444,7 @@ OR
     <img src="images/5_publish_flow_dialog.png" alt="image" style="width:600px;height:auto;">
 
 3.	Click **Publish**.
-4.	Click on **Catalog** and verify that your flow was successfully published.
+4.	Click on **Catalog** and verify that your flow was successfully published (you might have several pages of flows)
 5.	Make a simple change to your flow (e.g move processors to different positions)
 6.	Publish your flow again.
 7.	Check that your flow in the Catalog has multiple versions now.
@@ -481,15 +481,16 @@ OR
     | ----------------- | ------------- | 
     | CDP Workload User | **The workload username for the current user** |
     | CDP Workload Password | **The workload password for the current user** |
+    | Filter Rule | **SELECT * FROM FLOWFILE** |
     | Kafka Broker Endpoint | **Comma separated list of Kafka Brokers** |
     | Kafka Destination Avro Topic | **\<userid>-syslog-avro** |
     | Kafka Destination JSON Topic | **\<userid>-syslog-json** |
     | Kafka Producer ID | **\<userid>-producer** |
     | Schema Name | **\<userid>-syslog-avro** |
     | Schema Registry Hostname | **The hostname of the master server in the Kafka Datahub** |
-    | Filter Rule | **SELECT * FROM FLOWFILE** |
 
-8. In the **Sizing & Scaling** dialog, select the following and then click **Next**:
+
+9. In the **Sizing & Scaling** dialog, select the following and then click **Next**:
 
     | **Property**  | **Value** |
     | ----------------- | ------------- | 
@@ -498,7 +499,7 @@ OR
     | Min Nodes | **1** |
     | Max Nodes | **3** |
 
-9. In the Key Performance Indicators page, click on Add New KPI to add the following KPIs.
+10. In the Key Performance Indicators page, click on Add New KPI to add the following KPIs.
 
     <img src="images/6_add_kpi.png" alt="image" style="width:200px;height:auto;">
 
@@ -526,28 +527,28 @@ OR
 
         <img src="images/6_kpi_2.png" alt="image" style="width:600px;height:auto;">
 
-10.	Review the KPIs and click Next.
+11.	Review the KPIs and click Next.
 
     <img src="images/6_kpi_list.png" alt="image" style="width:800px;height:auto;">
 
-11.	In the Review page, review your deployment details.
+12.	In the Review page, review your deployment details.
 
     Notice that in this page there's a **>_ View CLI Command** link, which allows you to automate the flow deployment using the CDP CLI.
 
-12.	Click Deploy to initiate the flow deployment.
+13.	Click Deploy to initiate the flow deployment.
 
-13.	In the DataFlow **Dashboard**, monitor your flow until it's running successfully (a green check mark will appear once the deployment has completed)
+14.	In the DataFlow Dashboard **Deployments**, monitor your flow until it's running successfully (a green check mark will appear once the deployment has completed)
          
     <img src="images/6_flow_good_health.png" alt="image" style="width:10000px;height:auto;">
 
-14.	 Click on your deployment and explore the flow details and monitor the KPI metrics that are shown on this page.
+15.	 Click on your deployment and explore the flow details and monitor the KPI metrics that are shown on this page.
 
-15.	Then click on **Manage Deployment** and explore the options under Deployment Settings, which allow you to manage your production flow deployment.
+16.	Then click on **Manage Deployment** and explore the options under Deployment Settings, which allow you to manage your production flow deployment.
 
-16.	Explore the links in the **Actions** menu on this page.
+17.	Explore the links in the **Actions** menu on this page.
 
 
-## Streaming Analytics with Cloudera Stream Processing
+## Lab 2: Streaming Analytics with Cloudera Stream Processing
 
 ### Overview
 
@@ -664,7 +665,7 @@ You saw that when you register a Schema Registry catalog SSB automatically maps 
 
 Sometimes, though, you don't have a schema for a particular topic and you may still want to consume or produce data to that topic. In SSB you can manually create a table and specify its schema directly, as well as the mapping to an existing Kafka topic. In this section you will practice this using the Add Table wizard.
 
-1. In your project workspace, navigate to Data Sources -> Virtual Tables. 
+1. In your project workspace, navigate to Virtual Tables. 
 
 2. Click the menu icon (<img src="images/ssb_2_menu.png" alt="image" style="width:20px;height:auto;">)  of the Virtual Tables item and select New Kafka Table to create a new virtual table.
 
@@ -716,7 +717,7 @@ Sometimes, though, you don't have a schema for a particular topic and you may st
 
     <img src="images/ssb_5_virtualtable_kafka_schema_valid.png" alt="image" style="width:200px;height:auto;">
 
-8.	Click the **Create and Review** button to create the table.
+8.	Click the **Save and Review** button to create the table.
 9.	Review the table's DDL and click **Close**.
 
 ### 6. Unlock your keytab
@@ -748,7 +749,7 @@ In this section you will practice creating and executing SQL Streaming jobs to i
 #### Job 1: Selecting records from a Kafka virtual table
 
 1.	In the SSB console, ensure you have switched to your project and you are at your project's main page.
-2.	On the Explorer view, click the kebab menu ( )  of the Jobs item and select New Job to create a new one.
+2.	On the Explorer view, click the kebab menu (<img src="images/ssb_2_menu.png" alt="image" style="width:20px;height:auto;">)  of the Jobs item and select New Job to create a new one.
 
     <img src="images/ssb_7_job1_new.png" alt="image" style="width:800px;height:auto;">
 
@@ -840,7 +841,7 @@ In this section you will write a query that defines a sliding (HOP) window on th
 
 1.	On the Explorer view, right-click on the Jobs item and select New Job to create a new job. Call it **\<userid>_job3**.
 
-2.	Enter the following query in the SQL editor (You might have to adjust the table name):
+2.	Enter the following query in the SQL editor (adjust the table name with your userid):
 
     ```
     SELECT
@@ -884,7 +885,7 @@ This opens a number of possibilities like using data-at-rest tables to enrich st
     count(*) as severity_count
     FROM
     TABLE(
-        HOP(TABLE [userid_syslog_data],
+        HOP(TABLE <userid>_syslog_data,
             DESCRIPTOR(event_time),
             INTERVAL '5' SECOND,
             INTERVAL '30' SECOND)) a
@@ -990,16 +991,21 @@ You will start by creating a topic to store the results of your query and then m
     
     <img src="images/ssb_9_job5.png" alt="image" style="width:800px;height:auto;">
 
-10.	Click on the **Execute** button to submit your job for execution.
+    To take a step back, what you have done here is a SQL query
+  	 * using virtual tables abstracting the data sources
+    * that reads from a Kafka topic and a Kudu datasource
+    * and writes to a new Kafka topic!
 
-11.	You should see the output of the query on the Results tab once the job starts executing. You can close the tab or window at any time and the job will continue running on the Flink cluster.
+11.	Click on the **Execute** button to submit your job for execution.
+
+12.	You should see the output of the query on the Results tab once the job starts executing. You can close the tab or window at any time and the job will continue running on the Flink cluster.
 
     <img src="images/ssb_9_job5_output.png" alt="image" style="width:800px;height:auto;">
 
-12.	Open the SMM UI again, click on the Topics icon (<img src="images/ssb_9_smm_topic_magnifying_glass.png" alt="image" style="width:30px;height:auto;">) and search for the **\<userid>-severity-counts** topic.
+13.	Open the SMM UI again, click on the Topics icon (<img src="images/ssb_9_smm_topic_magnifying_glass.png" alt="image" style="width:30px;height:auto;">) and search for the **\<userid>-severity-counts** topic.
 
     <img src="images/ssb_9_job5_smm_topics.png" alt="image" style="width:800px;height:auto;">
 
-13.	Click on the Data Explorer icon (<img src="images/ssb_9_smm_topics_icon.png" alt="image" style="width:20px;height:auto;">) for the topic  to visualize the data in the topic. You should be able to see recently added data with the aggregations produced by job4:
+14.	Click on the Data Explorer icon (<img src="images/ssb_9_smm_topics_icon.png" alt="image" style="width:20px;height:auto;">) for the topic  to visualize the data in the topic. You should be able to see recently added data with the aggregations produced by job4:
 
     <img src="images/ssb_9_smm_topic_content_full.png" alt="image" style="width:800px;height:auto;">
