@@ -885,7 +885,7 @@ This opens a number of possibilities like using data-at-rest tables to enrich st
     count(*) as severity_count
     FROM
     TABLE(
-        HOP(TABLE [userid_syslog_data],
+        HOP(TABLE <userid>_syslog_data,
             DESCRIPTOR(event_time),
             INTERVAL '5' SECOND,
             INTERVAL '30' SECOND)) a
