@@ -717,7 +717,7 @@ Sometimes, though, you don't have a schema for a particular topic and you may st
 
     <img src="images/ssb_5_virtualtable_kafka_schema_valid.png" alt="image" style="width:200px;height:auto;">
 
-8.	Click the **Create and Review** button to create the table.
+8.	Click the **Save and Review** button to create the table.
 9.	Review the table's DDL and click **Close**.
 
 ### 6. Unlock your keytab
