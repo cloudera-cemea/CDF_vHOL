@@ -841,7 +841,7 @@ In this section you will write a query that defines a sliding (HOP) window on th
 
 1.	On the Explorer view, right-click on the Jobs item and select New Job to create a new job. Call it **\<userid>_job3**.
 
-2.	Enter the following query in the SQL editor (You might have to adjust the table name):
+2.	Enter the following query in the SQL editor (adjust the table name with your userid):
 
     ```
     SELECT
