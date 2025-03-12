@@ -749,7 +749,7 @@ In this section you will practice creating and executing SQL Streaming jobs to i
 #### Job 1: Selecting records from a Kafka virtual table
 
 1.	In the SSB console, ensure you have switched to your project and you are at your project's main page.
-2.	On the Explorer view, click the kebab menu ( )  of the Jobs item and select New Job to create a new one.
+2.	On the Explorer view, click the kebab menu (<img src="images/ssb_2_menu.png" alt="image" style="width:20px;height:auto;">)  of the Jobs item and select New Job to create a new one.
 
     <img src="images/ssb_7_job1_new.png" alt="image" style="width:800px;height:auto;">
 
