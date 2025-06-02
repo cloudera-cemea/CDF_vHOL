@@ -542,8 +542,6 @@ OR
 | <img src="images/info-icon.png" alt="info" style="width:16px;height:auto;"> Congratulations, you've completed Lab 1! Here's what you accomplished: you deployed a realtime flow that is reading Syslog data and publish every event, serialized in Avro and JSON formats, into 2 different Kafka topics. |
 | ---- |
 
-> Congratulations, you've completed Lab 1! Here's what you accomplished: you deployed a realtime flow that is reading Syslog data and publish every event, serialized in Avro and JSON formats, into 2 different Kafka topics.
-
 
 ## Lab 2: Streaming Analytics with Cloudera Stream Processing
 
