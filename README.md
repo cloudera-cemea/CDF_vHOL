@@ -92,7 +92,8 @@ The following is a step by step guide in building a data flow for use within CDF
     <img src="images/3_cdf_menu_1.png" alt="image" style="width:800px;height:auto;">
 
 
-2. To create your flow, click on the **CDF Workshop draft** and select (<img src="images/3_cdf_createnewdraft.png" alt="image" style="width:auto;height:30px;">) select the Target Project: **CDF Workshop** and name the flow substituting the **\<userid>** with your actual userid: **\<userid>-syslog-kafka-flow** and click **Create**
+2. To create your flow, click on the **CDF Workshop draft** and select (<img src="images/3_cdf_createnewdraft.png" alt="image" style="width:auto;height:30px;">) on the right to the "Deploy" blue button.
+   Select the Target Project: **CDF Workshop** and name the flow substituting the **\<userid>** with your actual userid: **\<userid>-syslog-kafka-flow** and click **Create**
 
     <img src="images/3_1_create_flow_1.png" alt="image" style="width:500px;height:auto;">
 
