@@ -137,7 +137,10 @@ This default context is automatically bound to each Process Group you create wit
 
    * Delete the controller service: **Dummy Controller Service - DELETE THIS!!!**) by clicking on the trash icon like on the following picture:
   
-     <img src="images/3_5_delete_dummy.png" alt="image" style="width:600px;height:auto;">
+     <img src="images/3_5_delete_dummy.png" alt="image" style="width:600px;height:auto;">    
+     <br /><br />
+     
+     > This controller service is a trick to avoid having you to enter all this information manually. As such, it cannot be enabled and have to be deleted now that everything is set up
 
 5.	Click on the **Back to Flow Designer** link to go back to the flow canvas
 
@@ -231,7 +234,7 @@ This default context is automatically bound to each Process Group you create wit
 
 3.	Create the Filter Events processor
 
-    1. Drag the Processor icon onto the canvas
+    1. Drag the **Processor** icon onto the canvas
     2. Select the **QueryRecord** processor.
     3. Configure the processor as follows:
 
@@ -265,7 +268,7 @@ This default context is automatically bound to each Process Group you create wit
 
 4.	Create the **Write To Kafka - Avro processor**
 
-    1. Drag the Processor icon onto the canvas
+    1. Drag the **Processor** icon onto the canvas
     2. Select the **PublishKafka2RecordCDP** processor.
     3. Configure the processor as follows:
 
@@ -302,39 +305,27 @@ This default context is automatically bound to each Process Group you create wit
 
 5.	Create the **Write To Kafka - JSON processor**
 
-    1. Drag the Processor icon onto the canvas
-    2. Select the PublishKafka2RecordCDP processor.
-    3. Configure the processor as follows:
+    1. Right-click on the  **Write To Kafka - Avro** processor you created in the last step and click on **Duplicate**
+
+    This processor would also write messages to a Kafka topic but serialized in JSON instead of Avro.
+  	 For this, all the parameters will be the same except the topic name and the Records writer.
+  	
+    2. Change the following properties in this processor:
 
         * Processor Name: **Write To Kafka - JSON**
-        * Add the following properties
+        * Change the following properties
 
             | **Property**  | **Value** |
             | ----------------- | ------------- | 
-            | Kafka Brokers| **#{Kafka Broker Endpoint}** |
             | Topic Name| **#{Kafka Destination JSON Topic}** |
-            | Record Reader| **WS_JSON_Syslog_Reader** |
             | Record Writer| **WS_JSON_Syslog_Writer** |
-            | Use Transactions| **false** |
-            | Security Protocol| **SASL_SSL** |
-            | SASL Mechanism| **PLAIN** |
-            | Username| **#{CDP Workload User}** | 
-            | Password| **#{CDP Workload User Password}** | 
-            | SSL Context Service| **Default NiFi SSL Context Service** |
-
-        * To set a specific id for the producer, click on the **Add Property** button to add a new property:
-
-            | **Property**      | **Value** |
-            | ----------------- | ------------- | 
-            | client.id  | **#{Kafka Producer ID}** |
-
             
         * Relationships: check **Terminate** for the **success** relationship
         * Click **Apply**
 
             <img src="images/3_4_flow_with_4_processors.png" alt="image" style="width:800px;height:auto;">
 
-6.	Connect the processors as shown in the diagram below:
+7.	Connect the processors as shown in the diagram below:
 
     * Connect the Processors **Generate Syslog RFC5424 & Filter Events** for Relationship **success**
     * Connect Processors **Filter Events & Write To Kafka - Avro** for Relationship **filtered_events**
@@ -364,24 +355,24 @@ For example:
 
 Test sessions are a feature in the CDF Flow Designer that allow you to start/stop processors and work with live data to validate your data flow logic. 
 
-To test your draft flow, start a Test Session by clicking **Flow Options > Test Session > Start Test Session**. This launches a NiFi sandbox to enable you to validate your draft flow and interactively work with live data by starting and stopping components.
+To test your draft flow, you start a Test Session. This launches a NiFi sandbox to enable you to validate your draft flow and interactively work with live data by starting and stopping components.
 
-Tip: You can check the status of your Test Session in the upper right corner of your workspace. That is where you can also deactivate your Test Session.
+> You can check the status of your Test Session in the upper right corner of your workspace. That is where you can also deactivate your Test Session.
 
 
 <img src="images/4_start_test_session.png" alt="image" style="width:400px;height:auto;">
 
 1.	If your test session is not yet started, start one by clicking on **Flow Options > Test Session > Start**.
 
-    **Note: If you had previously started and stopped a test session, the Start button is replaced with the Restart button. Clicking on Restart restarts the session with the same settings used previously. If you want to change the settings, click on the Edit Settings button.**
+    > If you had previously started and stopped a test session, the Start button is replaced with the Restart button. Clicking on Restart restarts the session with the same settings used previously. If you want to change the settings, click on the Edit Settings button.
 
-2.	Click **Start Test Session** (accept all defaults). Test session status changes to **Initializing Test Session**…
+   * Click **Start Test Session** (accept all defaults). Test session status changes to **Initializing Test Session**…
  
-3.	Wait for the status to change to **Active Test Session**.
+   * Wait for the status to change to **Active Test Session**.
 
-4.	Click **Flow Options > Services** to enable Controller Services, if not already enabled. 
+2.	Click **Flow Options > Services** to enable Controller Services, if not already enabled. 
 
-5.	Start all processors that are not running.
+3.	Start all processors that are not running.
 
     Stopped processors are identified by the icon <img src="images/4_processor_stopped.png" alt="image" style="width:20px;height:auto;">. Right-click on a stopped processor and select **Start** to start it.
 
@@ -391,7 +382,7 @@ Tip: You can check the status of your Test Session in the upper right corner of 
 
     You should see the flow running successfully and writing records to Kafka.
 
-6.	Access the SMM UI from the **Streams Messaging DataHub** page and check the topic metrics and data:
+4.	Access the SMM UI from the **Streams Messaging DataHub** page, click the **Topics** item on the left navigation bar and check the topic metrics and data (enter your <user-id> in Search to filter the list) :
 
     <img src="images/4_smm_topics.png" alt="image" style="width:1000px;height:auto;">
 
@@ -402,7 +393,7 @@ Tip: You can check the status of your Test Session in the upper right corner of 
     You can also view the data from the data explorer:  
     <img src="images/4_smm_data_explorer.png" alt="image" style="width:1000px;height:auto;">
 
-7.	If you're seing the **\<userid\>-syslog-avro** topic, you can see that the data in that topic is binary (lots of garbage-like characters). This is because this topic contains Avro messages, which is a binary serialization format.
+5.	If you're seing the **\<userid\>-syslog-avro** topic, you can see that the data in that topic is binary (lots of garbage-like characters). This is because this topic contains Avro messages, which is a binary serialization format.
 
     Fortunately, SMM is integrated to Schema Registry and can fetch the correct schema to properly deserialize the data and present a human-readable form of it.
     To do that select Avro as the Values Deserializer for the topic:
@@ -547,6 +538,11 @@ OR
 16.	Then click on **Manage Deployment** and explore the options under Deployment Settings, which allow you to manage your production flow deployment.
 
 17.	Explore the links in the **Actions** menu on this page.
+
+| <img src="images/info-icon.png" alt="info" style="width:16px;height:auto;"> Congratulations, you've completed Lab 1! Here's what you accomplished: you deployed a realtime flow that is reading Syslog data and publish every event, serialized in Avro and JSON formats, into 2 different Kafka topics. |
+| ---- |
+
+> Congratulations, you've completed Lab 1! Here's what you accomplished: you deployed a realtime flow that is reading Syslog data and publish every event, serialized in Avro and JSON formats, into 2 different Kafka topics.
 
 
 ## Lab 2: Streaming Analytics with Cloudera Stream Processing
