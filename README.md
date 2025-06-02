@@ -822,10 +822,11 @@ Once virtual tables are created in SSB, their backend and data format are transp
 
     Click **Execute** and check the results to verify that everything works as expected.
 
+
     <img src="images/ssb_7_job2.png" alt="image" style="width:1000px;height:auto;">
 
 
-3.	Once you're done, **Stop** your job.
+4.	Once you're done, **Stop** your job.
 
 
 #### 9.3. Job 3: Using a windowing function
@@ -889,6 +890,9 @@ This opens a number of possibilities like using data-at-rest tables to enrich st
     GROUP BY
     a.window_start, a.window_end, a.severity, b.severity_desc
     ````
+
+  	> Please make sure you're changing your userid for the syslog_data table, as well as the syslog_severity (remove what's between the square brackets in the join and start typing "severity" for auto-complete to happen)
+
 
     Click **Execute** and check the results to verify that everything works as expected.
 
