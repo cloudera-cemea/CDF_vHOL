@@ -891,7 +891,7 @@ This opens a number of possibilities like using data-at-rest tables to enrich st
     a.window_start, a.window_end, a.severity, b.severity_desc
     ````
 
-  	> Please make sure you're changing your userid for the syslog_data table, as well as the syslog_severity (remove what's between the square brackets in the join and start typing "severity" for auto-complete to happen)
+  	> Please make sure you're changing your userid for the syslog_data table, as well as the syslog_severity (remove what's between (and including) the square brackets in the join and start typing "severity" for auto-complete to happen)
 
 
     Click **Execute** and check the results to verify that everything works as expected.
