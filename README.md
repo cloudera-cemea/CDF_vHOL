@@ -171,7 +171,7 @@ This default context is automatically bound to each Process Group you create wit
 
         | **Property**  | **Value** |
         | ----------------- | ------------- | 
-        | Script Engine | **python** |
+        | Script Engine | **python DEPRECATED** |
         | Script Body | **see script below** 
   
         **\<copy and paste the following script>**
