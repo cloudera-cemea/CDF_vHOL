@@ -122,7 +122,7 @@ This default context is automatically bound to each Process Group you create wit
 
    <img src="images/3_2_test_session.png" alt="image" style="width:600px;height:auto;">
 
-   You are not yet at the point of testing the flow, but enabling a test session provided you an option to enable all controller services, except the **Dummy Controller Service - Do not touch!!!**, which we will do in the next step. 
+   You are not yet at the point of testing the flow, but enabling a test session provided you an option to enable all controller services, except the one called **_Dummy Controller Service - Do not touch_!!!**, which we will do in the next step. 
 
 4. Click **Flow Options > Services**
 
