@@ -437,9 +437,6 @@ OR
 
 3.	Click **Publish**.
 4.	Click on **Catalog** and verify that your flow was successfully published (you might have several pages of flows)
-5.	Make a simple change to your flow (e.g move processors to different positions)
-6.	Publish your flow again.
-7.	Check that your flow in the Catalog has multiple versions now.
 
 ## 6. Deploy the flow in Production
 
