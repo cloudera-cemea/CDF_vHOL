@@ -866,7 +866,7 @@ Another powerful feature of Flink/SSB is that you can write queries joining tabl
 
 This opens a number of possibilities like using data-at-rest tables to enrich streaming data. In this section you will create a job that enriches the aggregation stream produced by the query from job3 by joining it with the syslog_severity table, which is stored in Kudu and has the definition of each one of the severity levels.
 
-1.	On the Explorer view, right-click on the Jobs item and select New Job to create a new job. Call it job4.
+1.	On the Explorer view, right-click on the Jobs item and select New Job to create a new job. Call it **<userid>_job4**.
 
 2.	Enter the following query in the SQL editor:
 
