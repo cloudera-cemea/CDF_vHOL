@@ -118,6 +118,12 @@ This default context is automatically bound to each Process Group you create wit
 
    * Select **Flow Options > Test Session**. Use the latest NiFi version (default).
    * Click the **Start** button to start a test session. The test session status changes to **Initializing Test Session**.
+   * In the overview of the session settings make sure **This flow deployment uses custom python processors** is checked. When you check this you will get a pop-up to specify the S3 location of the custom python processor we are going to use. Ask the instructor for the specific location. Your username and workload password are required.
+
+   <img src="images/nifi2-custom-processor.png" alt="image" style="width:600px;height:auto;">
+
+   * Select the extra small size and click on **Start Test Session**
+     
    * Wait for the status to change to Active Test Session.
 
    <img src="images/3_2_test_session.png" alt="image" style="width:600px;height:auto;">
@@ -131,7 +137,7 @@ This default context is automatically bound to each Process Group you create wit
    <img src="images/3_3_cs.png" alt="image" style="width:600px;height:auto;">
 
    * Select **Flow Options > Services**
-   * Enable all services (**except the Dummy Controller Service - DELETE THIS!!!**) by clicking on the and select the (<img src="images/enable.png" alt="image" style="width:auto;height:30px;">) icon, start with the **WS_CDP_Schema_Registry**
+   * Enable all services (**except the Dummy Controller Service - DELETE THIS!!!**) by clicking on the and select the (<img src="images/enable.png" alt="image" style="width:auto;height:30px;">) icon, start with the **KerberosPasswordUserService**, **WS_CDP_Schema_Registry** and **ClouderaEncodedSchemaReferenceWriter**
 
     <img src="images/3_4_controller.png" alt="image" style="width:600px;height:auto;">
 
@@ -155,7 +161,7 @@ This default context is automatically bound to each Process Group you create wit
 
         <img src="images/3_4_add_processor.png" alt="image" style="width:400px;height:auto;">
 
-    2. Select the **ExecuteScript** processor.
+    2. Select the **GenerateSyslogMessages** processor.
     3. Configure the processor as follows:
 
         | **Property**  | **Value** |
@@ -166,63 +172,6 @@ This default context is automatically bound to each Process Group you create wit
         | Execution | **Primary Node** |
 
         <img src="images/3_4_executescript_config.png" alt="image" style="width:600px;height:auto;">
-
-    4. Properties:
-
-        | **Property**  | **Value** |
-        | ----------------- | ------------- | 
-        | Script Engine | **python DEPRECATED** |
-        | Script Body | **see script below** 
-  
-        **\<copy and paste the following script>**
-        
-        ```
-        ##
-        ## Author: Nasheb Ismaily
-        ## Description: Generates a random RFC5424 format syslog message
-        ##
-        
-        from org.apache.commons.io import IOUtils
-        from java.nio.charset import StandardCharsets
-        from org.apache.nifi.processor.io import OutputStreamCallback
-        import random
-        from datetime import datetime
-        
-        class PyOutputStreamCallback(OutputStreamCallback):
-            def __init__(self):
-                pass
-        
-            def process(self, outputStream):
-                hostname = "host"
-                domain_name = ".example.com"
-                tag = ["kernel", "python", "application"]
-                version = "1"
-                nouns = "application"
-                verbs = ("started", "stopped", "exited", "completed")
-                adv = ("successfully", "unexpectedly", "cleanly", "gracefully")
-        
-                for i in range(1,10):
-                    application = "{0}{1}".format(nouns, random.choice(range(1, 11)))
-                    message_id = "ID{0}".format(random.choice(range(1, 50)))
-                    random_tag = random.choice(tag)
-                    structured_data = "[SDID iut=\"{0}\" eventSource=\"{1}\" eventId=\"{2}\"]".format(random.choice(range(1, 10)), random_tag, random.choice(range(1, 100)))
-                    time_output = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z'
-                    random_host = random.choice(range(1, 11))
-                    fqdn = "{0}{1}{2}".format(hostname, random_host, domain_name)
-                    random_pid = random.choice(range(500, 9999))
-                    priority = random.choice(range(0, 191))
-                    num = random.randrange(0, 4)
-                    random_message = application + ' has ' + verbs[num] + ' ' + adv[num]
-        
-                    syslog_output = ("<{0}>{1} {2} {3} {4} {5} {6} {7} {8}\n".format(priority, version, time_output, fqdn, application,random_pid, message_id,structured_data, random_message))
-                    outputStream.write(bytearray(syslog_output.encode('utf-8')))
-        
-        flowFile = session.create()
-        if (flowFile != None):
-            flowFile = session.write(flowFile, PyOutputStreamCallback())
-            session.transfer(flowFile, REL_SUCCESS)
-        ```
-        
 
     4. **Relationships**: check **Terminate** for the **failure** relationship
 
@@ -284,8 +233,8 @@ This default context is automatically bound to each Process Group you create wit
             | Use Transactions| **false** |
             | Security Protocol| **SASL_SSL** |
             | SASL Mechanism| **PLAIN** |
-            | Username| **#{CDP Workload User}** | 
-            | Password| **#{CDP Workload User Password}** | 
+            | sasl.username| **#{CDP Workload User}** | 
+            | sasl.password| **#{CDP Workload User Password}** | 
             | SSL Context Service| **Default NiFi SSL Context Service** |
 
             <img src="images/3_4_publish_kafka_config.png" alt="image" style="width:600px;height:auto;">
@@ -431,7 +380,8 @@ OR
 2.	In the Publish Flow dialog box, enter the following details:
     1. Flow Name: only when you publish your flow for the first time.
     2. Flow Description: only when you publish your flow for the first time e.g. "Flow generates syslog messages and writes them to Kafka"
-    3. Version Comments: every time a flow version is published.
+    3. Collection: Unassigned
+    4. Version Comments: every time a flow version is published.
 
     <img src="images/5_publish_flow_dialog.png" alt="image" style="width:600px;height:auto;">
 
@@ -460,7 +410,7 @@ OR
 
     <img src="images/6_flow_deployment_name.png" alt="image" style="width:800px;height:auto;">
 
-6. In the **NiFi Configuration** page, accept all the defaults (no need to change runtime version, autostart behavior, inbound connections and custom NAR) and click **Next**.
+6. In the **NiFi Configuration** page, accept all the defaults except for **This flow deployment uses custom python processors** ( Repeat the same steps as done previously to point to the S3 bucket containing the custom processor ) (no need to change runtime version, autostart behavior, inbound connections and custom NAR) and click **Next**.
 
     <img src="images/6_flow_deployment_nifi_config.png" alt="image" style="width:800px;height:auto;">
 
@@ -487,8 +437,9 @@ OR
     | Enable Auto Scaling | **Enabled** |
     | Min Nodes | **1** |
     | Max Nodes | **3** |
+    |Additional Storage for Python Processors | **1Gb** |
 
-10. In the Key Performance Indicators page, click on Add New KPI to add the following KPIs.
+11. In the Key Performance Indicators page, click on Add New KPI to add the following KPIs.
 
     <img src="images/6_add_kpi.png" alt="image" style="width:200px;height:auto;">
 
@@ -516,25 +467,25 @@ OR
 
         <img src="images/6_kpi_2.png" alt="image" style="width:600px;height:auto;">
 
-11.	Review the KPIs and click Next.
+12.	Review the KPIs and click Next.
 
     <img src="images/6_kpi_list.png" alt="image" style="width:800px;height:auto;">
 
-12.	In the Review page, review your deployment details.
+13.	In the Review page, review your deployment details.
 
     Notice that in this page there's a **>_ View CLI Command** link, which allows you to automate the flow deployment using the CDP CLI.
 
-13.	Click Deploy to initiate the flow deployment.
+14.	Click Deploy to initiate the flow deployment.
 
-14.	In the DataFlow Dashboard **Deployments**, monitor your flow until it's running successfully (a green check mark will appear once the deployment has completed)
+15.	In the DataFlow Dashboard **Deployments**, monitor your flow until it's running successfully (a green check mark will appear once the deployment has completed)
          
     <img src="images/6_flow_good_health.png" alt="image" style="width:10000px;height:auto;">
 
-15.	 Click on your deployment and explore the flow details and monitor the KPI metrics that are shown on this page.
+16.	 Click on your deployment and explore the flow details and monitor the KPI metrics that are shown on this page.
 
-16.	Then click on **Manage Deployment** and explore the options under Deployment Settings, which allow you to manage your production flow deployment.
+17.	Then click on **Manage Deployment** and explore the options under Deployment Settings, which allow you to manage your production flow deployment.
 
-17.	Explore the links in the **Actions** menu on this page.
+18.	Explore the links in the **Actions** menu on this page.
 
 | <img src="images/info-icon.png" alt="info" style="width:16px;height:auto;"> Congratulations, you've completed Lab 1! Here's what you accomplished: you deployed a realtime flow that is reading Syslog data and publish every event, serialized in Avro and JSON formats, into 2 different Kafka topics. |
 | ---- |
@@ -1005,3 +956,71 @@ You will start by creating a topic to store the results of your query and then m
 14.	Click on the Data Explorer icon (<img src="images/ssb_9_smm_topics_icon.png" alt="image" style="width:20px;height:auto;">) for the topic  to visualize the data in the topic. You should be able to see recently added data with the aggregations produced by job4:
 
     <img src="images/ssb_9_smm_topic_content_full.png" alt="image" style="width:800px;height:auto;">
+
+### Bonus Lab Exercise
+If time allows, please execute the following steps to get familiar with the SSB API. With this API you can build and operationalize CI/CD pipelines so there is no manual intervention needed. To keep the exercise simple we use the API explorer of SSB to simulate the automation.
+
+1. In the top left screen of the SSB UI click on the orange icon. I side panel will appear
+2. On the side panel click on **API Explorer**
+3. Your browser takes you to a new tab containing a swagger UI with all the api calls of the SSB.
+#### Get your project 
+1. In the API explorer search for **Project Operations**
+2. Click on **/api/v2/projects** and a box will expand.
+3. Click on **Try it out!**
+4. Click on **Execute**
+5. In the response body you will see something similar like this ( write down the id that belongs to your project **<userid>_default** : ::
+   
+   [
+  {
+    "id": "ffffffff",
+    "name": "ssb_default",
+    "description": "Default Team"
+  },
+  {
+    "id": "035e2343",
+    "name": "user099_default",
+    "description": "user099's Project"
+  }
+]
+
+#### Create a job
+1. In the API explorer search for **Job Operations**
+2. Expand the call **/api/v2/projects/{projectId}/jobs**
+3. Click on **Try it out!**
+4. **projectId** is mandatory and needs to be filled in. This is the id you got from the previous api call
+5. As this is a POST request the body needs to be filled in with a payload for the API call:
+```
+{
+    "sql": "SELECT * FROM user099_syslog_data;",
+    "job_config": {
+        "job_name": "user099_jobA",
+        "runtime_config": {
+            "execution_mode": "PER_JOB"
+        }
+    }
+}
+
+```
+6. Replace **user099** with your actual user id
+7. Click on **Execute** to create the job.
+8. Review the output of the job ( and write down the **job_id** from the response body ) and verify you also see the job in the SSB UI.
+#### Start a job
+1. In the API explorer search for **Job Operations** ( most likely you are already on that section )
+2. Search for **/api/v2/projects/{projectId}/jobs/{id}/execute** and expand the call
+3. Click on **Try it out!**
+4. In this API call **id** and **projectId** is mandatory. Fill in the previously noted values , make the **Request Body** empty
+5. Click on **Execute**
+6. Review if the job has started in the SSB UI
+#### Stop a job
+1. In the API explorer search for **Job Operations** ( most likely you are already on that section )
+2. Search for **/api/v2/projects/{projectId}/jobs/{id}/stop** and expand the call
+3. Click on **Try it out!**
+4. In this API call **id** and **projectId** is mandatory. Fill in the previously noted values, use the following for the **Request Body**
+```
+   {
+"savepoint": false
+}
+```
+5. Click on **Try it out!**
+
+
